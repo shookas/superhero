@@ -1,5 +1,4 @@
-
-import { z } from "zod";
+import { SuperheroModel, SuperheroSchema } from "../../../types/api";
 
 export class Superhero implements SuperheroModel {
   name: string;
@@ -10,10 +9,3 @@ export class Superhero implements SuperheroModel {
     this.powers = powers;
   }
 }
-
-export type SuperheroModel = z.infer<typeof SuperheroSchema>;
-
-const SuperheroSchema = z.object({
-    name: z.string(),
-    powers: z.array(z.string()),
-  }).required();

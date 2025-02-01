@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { Storage } from "../repositories/Storage";
-import { Superhero, SuperheroModel } from "../types/superhero";
+import { Superhero } from "../types/superhero";
+import { SuperheroModel } from "../../../types/api";
 
 export class SuperheroController {
   private storage: Storage<Superhero>;
