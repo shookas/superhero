@@ -1,0 +1,16 @@
+{
+  "name": "superhero",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "pnpm run -r start",
+    "test": "pnpm run -r test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.7.3"
+  }
+}
