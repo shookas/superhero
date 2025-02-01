@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { InMemoryStorage, Storage } from "../repositories/Storage";
+import { Storage } from "../repositories/Storage";
 import { Superhero, SuperheroModel } from "../types/superhero";
 
 export class SuperheroController {
@@ -11,7 +11,7 @@ export class SuperheroController {
    * GET /superheroes
    */
   async getSuperheroes(req: Request, res: Response) {
-    const superheroes = await this.storage.getAllObjects()
+    const superheroes = await this.storage.getAllObjects();
     res.json(superheroes);
   }
   /**

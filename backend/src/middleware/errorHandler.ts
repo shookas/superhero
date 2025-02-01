@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
+import { z } from 'zod';
 
 export class ResponseError {
   status: number;
@@ -14,7 +15,7 @@ export class ResponseError {
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 export default (err: ResponseError, req: Request, res: Response, next: NextFunction) => {
-  const status = err.status || 500;
+  let status = err.status || 500;
   const logBody = {
     status,
     error: err.error
@@ -34,9 +35,16 @@ export default (err: ResponseError, req: Request, res: Response, next: NextFunct
         }
       : {},
   };
+  let message: string;
+  if (err instanceof z.ZodError) {
+    status = 422;
+    message = err.issues.map((issue) => `${issue.message} in ${issue.path}`).join(", ");
+  } else {
+    message = err.message;
+  }
   const resBody = {
     status,
-    message: err.message,
+    message: message,
   };
 
   if (logBody.req.headers?.authorization) {
