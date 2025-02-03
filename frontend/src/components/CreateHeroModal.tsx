@@ -44,13 +44,14 @@ const CreateHeroModal: React.FC<{ onHeroCreated: () => void }> = ({
     <div>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Name:</label>
-          <input type="text" value={name} onChange={handleNameChange} />
+          <label htmlFor="name">Name:</label>
+          <input id="name" type="text" value={name} onChange={handleNameChange} />
         </div>
         <div>
-          <label>Powers:</label>
+          <label htmlFor="powers">Powers:</label>
           {powers.map((power, index) => (
             <input
+            id="powers"
               key={index}
               type="text"
               value={power}
