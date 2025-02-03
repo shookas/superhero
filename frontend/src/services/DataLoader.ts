@@ -21,6 +21,20 @@ class DataLoader {
     }
   }
 
+  async deleteHero(name: string): Promise<void> {
+    try {
+      const response = await fetch(`${this.baseUrl}/${name}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        throw new Error(`Error deleting hero: ${response.statusText}`);
+      }
+    } catch (error) {
+      console.error("Failed to delete hero:", error);
+      throw error;
+    }
+  }
+
   async saveHero(hero: SuperheroModel): Promise<void> {
     try {
       const response = await fetch(this.baseUrl, {

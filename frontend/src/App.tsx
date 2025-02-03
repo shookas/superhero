@@ -10,6 +10,7 @@ function App() {
 
   return (
     <>
+
       <button onClick={() => openModal(() => true)}>Create Hero</button>
       <Modal
         open={modalOpen}

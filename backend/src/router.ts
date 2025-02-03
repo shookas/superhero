@@ -10,5 +10,6 @@ const superheroController = new SuperheroController(new InMemoryStorage<Superher
 router.get(`/health`, healthController.index);
 router.get(`/superheroes`, superheroController.getSuperheroes.bind(superheroController));
 router.post(`/superheroes`, superheroController.createSuperhero.bind(superheroController));
+router.delete(`/superheroes/:name`, superheroController.deleteSuperhero.bind(superheroController));
 
 export default router;
